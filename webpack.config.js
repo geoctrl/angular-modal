@@ -10,7 +10,10 @@ const ENV = process.env.npm_lifecycle_event;
 const isTest = ENV === 'test' || ENV === 'test-watch';
 const isProd = ENV === 'build';
 
-const include = /src/;
+const include = [
+	path.resolve(__dirname, 'src'),
+	path.resolve('node_modules', '@pierian')
+];
 
 module.exports = function() {
 
@@ -48,27 +51,27 @@ module.exports = function() {
 			{
 				test: /\.ts$/,
 				loader: 'babel!awesome-typescript',
-				exclude: [/node_modules/, /dist/]
+				include
 			},
 			{
 				test: /.scss$/,
 				loader: 'style!css!postcss!sass',
-				exclude: [/node_modules/, /dist/]
+				include
 			},
 			{
 				test: /.html$/,
 				loader: 'raw?html-minify',
-				exclude: [/node_modules/, /dist/]
+				include
 			},
 			{
 				test: /\.svg$/,
 				loader: 'svg-inline!html-minify',
-				exclude: [/node_modules/, /dist/]
+				include
 			},
 			{
 				test: /\.json$/,
 				loader: 'json',
-				exclude: [/node_modules/, /lib/]
+				include
 			},
 
 		],
