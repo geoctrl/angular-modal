@@ -18,6 +18,7 @@
   "devDependencies": {
     "@types/core-js": "^0.9.35",
     "@types/d3": "^4.4.0",
+    "@types/es6-shim": "^0.31.32",
     "@types/lodash": "^4.14.43",
     "@types/node": "^6.0.52",
     "autoprefixer": "^6.5.4",
