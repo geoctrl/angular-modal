@@ -2,7 +2,7 @@
   "name": "design-guide",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "webpack-dev-server --history-api-fallback --progress --port 8080 --inline --watch",
     "build": "rimraf dist && webpack --progress --profile --bail",
