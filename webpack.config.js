@@ -11,6 +11,7 @@ const isTest = ENV === 'test' || ENV === 'test-watch';
 const isProd = ENV === 'build';
 
 const include = [
+	path.resolve(__dirname, 'dev'),
 	path.resolve(__dirname, 'src'),
 	path.resolve('node_modules', '@pierian')
 ];
@@ -27,13 +28,13 @@ module.exports = function() {
 	config.cache = true;
 
 	config.entry = isTest ? {} : {
-		polyfills: path.resolve(__dirname, 'src', 'polyfills.ts'),
-		vendors: path.resolve(__dirname, 'src', 'vendors.ts'),
-		app: path.resolve(__dirname, 'src', 'main.ts')
+		polyfills: path.resolve(__dirname, 'dev', 'polyfills.ts'),
+		vendors: path.resolve(__dirname, 'dev', 'vendors.ts'),
+		app: path.resolve(__dirname, 'dev', 'main.ts')
 	};
 
 	config.output = isTest ? {} : {
-		path: path.resolve(__dirname, 'src'),
+		path: path.resolve(__dirname, 'dev'),
 		filename: '[name].js'
 	};
 
@@ -41,7 +42,7 @@ module.exports = function() {
 	config.resolve = {
 		cache: !isTest,
 		root: [
-			path.join( __dirname, 'src' )
+			path.join( __dirname, 'dev' )
 		],
 		extensions: ['', '.ts', '.js', '.scss', '.html']
 	};
@@ -107,7 +108,7 @@ module.exports = function() {
 				}),
 
 				new HtmlWebpackPlugin({
-					template: 'src/app/index.ejs',
+					template: 'dev/app/index.ejs',
 					envDev: !isProd,
 					envProd: isProd
 				})
@@ -115,7 +116,7 @@ module.exports = function() {
 	}
 
 	config.devServer = {
-		contentBase: './src',
+		contentBase: './dev',
 		historyApiFallback: true,
 		stats: 'minimal'
 	};

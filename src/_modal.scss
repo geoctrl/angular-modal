@@ -1,0 +1,60 @@
+body.modal--active {
+	overflow: hidden;
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba($color-accent-900, .8);
+	z-index: 0;
+	opacity: 0;
+	display: none;
+}
+
+
+.modal-parent {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	overflow: auto;
+}
+
+.modal {
+	background-color: #fff;
+	border-radius: 0 0 $border-radius $border-radius;
+	transition: opacity 400ms ease;
+	display: block;
+	box-shadow: 0 1px 10px 4px rgba(#000, 0.2);
+	width: 400px;
+	margin: 0 auto $space-xl auto;
+
+	.btn {
+		margin-left: $space-sm;
+	}
+}
+
+.modal-header {
+	padding: $space-md $space-lg;
+	font-size: 1.15rem;
+}
+
+.modal-body {
+	padding: 0 $space-lg $space-lg $space-lg;
+}
+
+.modal-footer {
+	padding: 0 $space-lg $space-lg $space-lg;
+	text-align: right;
+}
+
+.modal--lg {
+	width: 700px;
+}
+
+
