@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, HostListener, Renderer } from '@angular/core';
 import { ModalService } from "./modal.service";
 import { deferObservable } from '@pierian/utilities';
+import { Observable } from "rxjs";
 const Velocity = require('velocity-animate');
 
 @Component({
@@ -13,12 +14,6 @@ const Velocity = require('velocity-animate');
   `
 })
 export class ModalComponent {
-
-  constructor(
-      private resolver: ComponentFactoryResolver,
-      private modalService: ModalService,
-      private renderer: Renderer
-  ) { }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -34,6 +29,12 @@ export class ModalComponent {
   active: boolean = false;
   modalList = [];
 
+  constructor(
+      private resolver: ComponentFactoryResolver,
+      private modalService: ModalService,
+      private renderer: Renderer
+  ) { }
+
   ngAfterContentInit() {
     this.modalService.passComponent(this);
   }
@@ -45,9 +46,14 @@ export class ModalComponent {
    * @return {AsyncSubject}
    */
   open = function(component, config:any={}) {
+    config = Object.assign({
+      backdropClose: true,
+      escapeClose: true
+    }, config);
+
     // get component
     let componentRef = this.view.createComponent(
-        this.resolver.resolveComponentFactory(component)
+        this.resolver.resolveComponentFactory(component, {read: ViewContainerRef})
     );
 
     // use data as an @Input
@@ -67,6 +73,16 @@ export class ModalComponent {
       this.activate();
     }
 
+    // if the component has 0 or 2+ children, throw error
+    let children = componentRef.location.nativeElement.children.length;
+    if (children == 0 || children >= 2) {
+      throw Error(`[${component.name}] Must have only have 1 root child in the template.`);
+    }
+
+    // if the component doesn't have a .modal class, add one
+    if (!componentRef.location.nativeElement.children[0].classList.contains('modal')) {
+      componentRef.location.nativeElement.children[0].classList.add('modal');
+    }
     this.animateModalIn(componentRef._nativeElement);
     return defer.observable;
   };

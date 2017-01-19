@@ -4,7 +4,7 @@ import { ModalService } from "../../../src/modal.service";
 
 @Component({
   template: `
-<div class="modal">
+<div>
     <div class="modal-header">
         Confirm This Thing
     </div>
@@ -16,7 +16,7 @@ import { ModalService } from "../../../src/modal.service";
         <button class="btn btn--accent" (click)="cancel()">Cancel</button>
     </div>
 </div>
-    `
+`
 })
 export class TestModalComponent {
   constructor(private modalService: ModalService) {
