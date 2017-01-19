@@ -13,7 +13,7 @@ import { DialogService } from "../../src/dialog/dialog.service";
 `,
 
 })
-export default class {
+export class AppComponent {
   constructor(private modalService: ModalService, private dialogService: DialogService) {}
 
   openModal() {
