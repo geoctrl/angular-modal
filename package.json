@@ -1,6 +1,6 @@
 {
   "name": "design-guide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "tony@pieriandx.com",
   "devDependencies": {
     "@pierian/global-styles": "^1.0.0",
-    "@pierian/utilities": "^1.0.1",
+    "@pierian/utilities": "^1.0.6",
     "@types/core-js": "^0.9.35",
     "@types/d3": "^4.4.0",
     "@types/lodash": "^4.14.43",
@@ -67,6 +67,6 @@
     "prismjs": "^1.6.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.0.1",
-    "zone.js": "^0.7.5"
+    "zone.js": "^0.7.6"
   }
 }

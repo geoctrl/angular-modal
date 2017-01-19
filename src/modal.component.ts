@@ -1,6 +1,5 @@
 import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, HostListener, Renderer } from '@angular/core';
 import { ModalService } from "./modal.service";
-import { AsyncSubject, Observable } from 'rxjs';
 import { deferObservable } from '@pierian/utilities';
 const Velocity = require('velocity-animate');
 

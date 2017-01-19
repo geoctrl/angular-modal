@@ -1,30 +1,27 @@
-import {Injectable} from "@angular/core";
+import { Observable } from "rxjs";
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
-@Injectable()
 export class ModalService {
 
   modalComponent;
 
   passComponent(modalComponent) {
-    // confirm methods
-    if (modalComponent.open &&
-        modalComponent.submit &&
-        modalComponent.cancel) {
-      this.modalComponent = modalComponent;
+    this.modalComponent = modalComponent;
+  }
+
+  public open(component, config={}) {
+    if (this.modalComponent) {
+      return this.modalComponent.open(component, config);
     } else {
-      throw Error('[ModalService] must be initialized with Component containing open, close and cancel methods.')
+      throw Error(`[ModalService] Missing the <modal> component in the AppModule template.`);
     }
   }
 
-  open(component, config={}) {
-    return this.modalComponent.open(component, config);
-  }
-
-  submit(data = null) {
+  public submit(data = null) {
     return this.modalComponent.submit(data);
   }
 
-  cancel(data = null) {
+  public cancel(data = null) {
     return this.modalComponent.cancel(data);
   }
 }
