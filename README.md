@@ -2,6 +2,15 @@
 
 Dynamic modals and dialogs.
 
+### Unfinished Docs
+
+need to finish the docs:
+
+- pass data to the rendered modal components
+- force component by adding modal components to "entryComponents" in @NgModule
+- docs for the dialog service
+
+
 ### Install
 
 Install the component:
