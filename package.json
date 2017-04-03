@@ -1,10 +1,10 @@
 {
-  "name": "@pierian/modal",
-  "version": "1.0.2",
-  "description": "",
+  "name": "@geocompy/angular-modal",
+  "version": "0.0.1",
+  "description": "Angular Modal",
   "main": "index.ts",
   "scripts": {
-    "start": "webpack-dev-server --history-api-fallback --progress --port 8080 --inline --watch",
+    "start": "webpack-dev-server --history-api-fallback --progress --port 8888 --inline --watch",
     "build": "rimraf dist && webpack --progress --profile --bail",
     "deploy": "scp -r dist/* deployhere:/",
     "test": "karma start",
@@ -12,12 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://tlefler@bitbucket.pieriandx.com/scm/pdxfe/modal.git"
+    "url": "https://github.com/geoctrl/angular-modal.git"
   },
   "author": "@geoctrl",
   "devDependencies": {
-    "@pierian/global-styles": "^1.0.0",
-    "@pierian/utilities": "^1.0.6",
     "@types/core-js": "^0.9.35",
     "@types/node": "^6.0.52",
     "autoprefixer": "^6.5.4",
@@ -32,7 +30,6 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "html-minify-loader": "^1.1.0",
     "html-webpack-plugin": "^2.24.1",
-    "json-loader": "^0.5.4",
     "node-sass": "^4.0.0",
     "path": "^0.12.7",
     "postcss-loader": "^1.2.1",
@@ -41,7 +38,6 @@
     "sass-loader": "^4.0.2",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
-    "svg-inline-loader": "^0.7.1",
     "tslint": "^3.15.1",
     "tslint-loader": "^2.1.5",
     "typescript": "^2.1.4",
@@ -60,7 +56,6 @@
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/router": "^3.3.1",
     "core-js": "^2.4.1",
-    "prismjs": "^1.6.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.0.1",
     "zone.js": "^0.7.6"

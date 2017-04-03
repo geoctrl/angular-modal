@@ -1,2 +1,20 @@
-@import "../../../node_modules/@pierian/global-styles/src/main";
 @import "../../../src/modal";
+
+body {
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.btn {
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 14px;
+	color: #808080;
+	background-color: #e3e3e3;
+	border: none;
+	padding: 8px 10px;
+	cursor: pointer;
+
+	&:hover {
+		background: #c3c3c3;
+	}
+}

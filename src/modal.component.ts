@@ -1,7 +1,7 @@
 import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, HostListener, Renderer } from '@angular/core';
 import { ModalService } from "./modal.service";
-import { deferObservable } from '@pierian/utilities';
-import { Observable } from "rxjs";
+
+const AsyncSubject = require("rxjs").AsyncSubject;
 const Velocity = require('velocity-animate');
 
 @Component({
@@ -60,7 +60,7 @@ export class ModalComponent {
     componentRef.instance.data = config.data;
 
     // create modal data observable
-    let defer = deferObservable();
+    let defer = this.deferObservable();
 
     this.modalList.push({
       component: componentRef,
@@ -189,4 +189,32 @@ export class ModalComponent {
       this.cancel()
     }
   }
+
+  /**
+   * Defer Observable
+   * works similar to $q.defer(), but with observable instead
+   * @return {object}
+   */
+  private deferObservable() {
+  const subject = new AsyncSubject();
+
+  const stopped = isStopped => {
+    if (isStopped) {
+      throw Error('[deferObservable] Unable to resolve or reject finished observable.');
+    }
+  };
+
+  return {
+    resolve: res => {
+      stopped(subject.isStopped);
+      subject.next(res);
+      subject.complete();
+    },
+    reject: err => {
+      stopped(subject.isStopped);
+      subject.error(err);
+    },
+    observable: subject
+  };
+}
 }

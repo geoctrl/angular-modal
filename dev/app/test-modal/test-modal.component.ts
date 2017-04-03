@@ -5,13 +5,13 @@ import { ModalService } from "../../../src/modal.service";
 @Component({
   template: `
 <div>
-    <div class="modal-header">
+    <div class="modal__header">
         Confirm This Thing
     </div>
-    <div class="modal-body">
+    <div class="modal__body">
         This is where you confirm the thing.
     </div>
-    <div class="modal-footer">
+    <div class="modal__footer">
         <button class="btn btn--primary" (click)="confirm()">Confirm</button>
         <button class="btn btn--accent" (click)="cancel()">Cancel</button>
     </div>
