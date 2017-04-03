@@ -6,7 +6,7 @@ Dynamic modals and dialogs.
 
 Install the component:
 
-    npm install @geocompy/modal --save
+    npm install @geocompy/angular-modal --save
 
 
 Add the ModalModule to your root module:
